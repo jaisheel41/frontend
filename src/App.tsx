@@ -1,26 +1,30 @@
+// src/App.tsx
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Projects from './pages/Projects';
+import About from './pages/About';
+import Skills from './pages/Skills';
+import Experience from './pages/Experience';
+import Education from './pages/Education';
+import Contact from './pages/Contact';
+import UniqueSection from './pages/UniqueSection';
+import Navbar from './components/Navbar';
+const App: React.FC = () => {
+    return (
+        <Router>
+            <Navbar /> {/* Navbar to navigate between sections */}
+            <Routes>
+                <Route path="/" element={<About />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/skills" element={<Skills />} />
+                <Route path="/experience" element={<Experience />} />
+                <Route path="/education" element={<Education />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/unique" element={<UniqueSection />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
