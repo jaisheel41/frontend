@@ -18,9 +18,16 @@ export const fetchEducation = async (): Promise<EducationData[]> => {
 };
 
 export const fetchSkills = async (): Promise<Skill[]> => {
-    const response = await api.get<Skill[]>('skills/');
-    return response.data;
+    try {
+        const response = await api.get<Skill[]>('skills/');  // Endpoint matches Django router
+        console.log("Skills data received from API:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching skills:', error);
+        throw error;
+    }
 };
+
 
 export const fetchMilestones = async (): Promise<Milestone[]> => {
     const response = await api.get<Milestone[]>('milestones/');

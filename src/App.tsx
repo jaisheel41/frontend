@@ -8,21 +8,23 @@ import Experience from './pages/Experience';
 import Education from './pages/Education';
 import Contact from './pages/Contact';
 import UniqueSection from './pages/UniqueSection';
-import Navbar from './components/Navbar';
+import Layout from './components/Layout';  // Use Layout here only
+
 const App: React.FC = () => {
     return (
         <Router>
-            <Navbar /> {/* Navbar to navigate between sections */}
-            <Routes>
-                <Route path="/" element={<About />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/skills" element={<Skills />} />
-                <Route path="/experience" element={<Experience />} />
-                <Route path="/education" element={<Education />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/unique" element={<UniqueSection />} />
-            </Routes>
+            <Layout> {/* Apply Layout once here */}
+                <Routes>
+                    <Route path="/" element={<About />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/projects" element={<Projects />} />
+                    <Route path="/skills" element={<Skills />} />
+                    <Route path="/experience" element={<Experience />} />
+                    <Route path="/education" element={<Education />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/unique" element={<UniqueSection />} />
+                </Routes>
+            </Layout>
         </Router>
     );
 };

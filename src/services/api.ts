@@ -1,10 +1,8 @@
-// frontend/src/services/api.js
+// src/services/api.ts
 import axios from 'axios';
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000';
-
 const api = axios.create({
-    baseURL: `${backendUrl}/api/`,  // Base URL from environment variable
+    baseURL: 'http://127.0.0.1:8000/api/', // This must match your Django API URL
 });
 
 export default api;
