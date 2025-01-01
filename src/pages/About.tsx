@@ -10,7 +10,7 @@ function AboutMe() {
     return (
         <>
             Hi, I'm Jaisheel Polimera! 👋
-            I'm a passionate developer specializing in front-end development.
+            I'm a passionate developer specializing in full stack development.
             I enjoy creating interactive applications and love exploring
             new technologies to push the boundaries of web development.
             
