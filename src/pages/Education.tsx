@@ -11,9 +11,9 @@ const Education: React.FC = () => {
     useEffect(() => {
         const getEducation = async () => {
             try {
-                console.log("Fetching education data...");
+                //console.log("Fetching education data...");
                 const data = await fetchEducation();
-                console.log("Education data received:", data);
+                //console.log("Education data received:", data);
                 setEducation(data);
                 setLoading(false);
             } catch (error) {

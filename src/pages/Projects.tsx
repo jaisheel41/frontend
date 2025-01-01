@@ -9,7 +9,7 @@ const Projects: React.FC = () => {
 
     useEffect(() => {
         
-        console.log("Fetching projects data...");
+        //console.log("Fetching projects data...");
 
         const loadProjects = async () => {
             try {
