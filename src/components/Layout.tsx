@@ -134,7 +134,6 @@ import Skills from '../pages/Skills'; // Import the Skills component
 
 const files = ['About Me', 'Education', 'Work Experience', 'Certifications', 'Skills', 'Projects', 'Contact'];
 
-// Define the props type with children
 interface LayoutProps {
     children: ReactNode;
 }
@@ -142,7 +141,6 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     const [activeSection, setActiveSection] = useState(files[0]);
 
-    // Set active section based on scroll position
     const handleScroll = () => {
         const sections = files.map((file) => document.getElementById(file));
         sections.forEach((section, index) => {
