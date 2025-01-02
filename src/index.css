@@ -5,3 +5,19 @@
 html {
     scroll-behavior: smooth;
 }
+
+.education-card {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.education-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -1.25rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: #4a5568; /* Match the theme color */
+    border-radius: 50%;
+}
