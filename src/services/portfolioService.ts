@@ -1,6 +1,6 @@
 // src/services/portfolioService.ts
 import api from './api';
-import { Project, ExperienceData, EducationData, Skill, Milestone } from '../types/types';
+import { Project, ExperienceData, EducationData, Skill, Certification } from '../types/types';
 
 export const fetchProjects = async (): Promise<Project[]> => {
     const response = await api.get<Project[]>('projects/');
@@ -30,8 +30,7 @@ export const fetchSkills = async (): Promise<Skill[]> => {
     }
 };
 
-
-export const fetchMilestones = async (): Promise<Milestone[]> => {
-    const response = await api.get<Milestone[]>('milestones/');
+export const fetchCertifications = async (): Promise<Certification[]> => {
+    const response = await api.get<Certification[]>('certifications/');
     return response.data;
 };

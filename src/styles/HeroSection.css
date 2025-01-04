@@ -1,0 +1,66 @@
+/* src/styles/HeroSection.css */
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /*background: linear-gradient(135deg, #1e1e2e, #3b82f6);*/
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Shining Text Animation */
+  .shining-text {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shine 2s infinite alternate;
+  }
+  
+  @keyframes shine {
+    from {
+      background-position: 0%;
+    }
+    to {
+      background-position: 100%;
+    }
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    opacity: 0.9;
+  }
+  
+  .highlight {
+    color: #ffcc00;
+    font-weight: bold;
+  }
+  
+  /* CTA Button Styling */
+  .cta-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff8a00, #e52e71);
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background: linear-gradient(45deg, #e52e71, #ff8a00);
+    transform: scale(1.05);
+  }
+  

@@ -281,9 +281,9 @@ const Projects: React.FC = () => {
                             </div>
                         </div>
                         <div className="flex justify-between items-center p-4 border-t border-gray-700">
-                            {project.link ? (
+                            {project.live_link ? (
                                 <a
-                                    href={project.link}
+                                    href={project.live_link}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2 text-blue-400 hover:text-blue-500 transition-colors"

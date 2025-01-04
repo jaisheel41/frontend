@@ -5,7 +5,8 @@ export interface Project {
     title: string;
     description: string;
     technologies: string;
-    link?: string;
+    live_link?: string;
+    github_link?: string;
     image?: string;
 }
 
@@ -33,9 +34,12 @@ export interface Skill {
     level: string;
 }
 
-export interface Milestone {
+export interface Certification {
     id: number;
     title: string;
-    description: string;
-    date: string;
+    organization: string;
+    issue_date: string;
+    description?: string;
+    credential_url?: string;
+    logo?: string;
 }
