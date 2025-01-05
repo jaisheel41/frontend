@@ -5,8 +5,8 @@ export interface Project {
     title: string;
     description: string;
     technologies: string;
-    live_link?: string;
-    github_link?: string;
+    Live_link?: string;
+    Github_link?: string;
     image?: string;
 }
 

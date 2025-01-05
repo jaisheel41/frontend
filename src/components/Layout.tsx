@@ -1,11 +1,10 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
 import { motion, useInView } from "framer-motion";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaArrowUp } from "react-icons/fa";
+import { BsChevronDown } from "react-icons/bs";
 
-// Importing HeroPage
 import HeroPage from "../pages/HeroSection";
 
-// Lazy loading other sections
 const About = lazy(() => import("../pages/About"));
 const Education = lazy(() => import("../pages/Education"));
 const Experience = lazy(() => import("../pages/Experience"));
@@ -27,6 +26,7 @@ const sections = [
 const Layout: React.FC = () => {
   const [activeSection, setActiveSection] = useState(sections[0].name);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,25 +40,45 @@ const Layout: React.FC = () => {
           }
         }
       }
+
+      const lastSection = document.getElementById("Contact");
+      if (lastSection) {
+        const rect = lastSection.getBoundingClientRect();
+        setShowScrollToTop(rect.top < window.innerHeight && rect.bottom > 0);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <div className="relative min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white">
-      {/* Navbar */}
-      <header className="z-10 w-full fixed top-0 bg-[#1e1e2e] p-4 shadow-md flex justify-between items-center px-6">
-        <h1 className="text-xl font-bold text-purple-400 tracking-wide">Jaisheel Polimera</h1>
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8">
+  return (
+    <div className="relative min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white overflow-x-hidden">
+      {/* Navbar */}
+      <header className="z-50 w-full fixed top-0 bg-[#1e1e2e] shadow-md flex items-center justify-between px-4 md:px-12 py-3">
+        {/* Name */}
+        <h1
+          className={`text-xl font-bold text-purple-400 md:text-left ${
+            menuOpen ? "text-center w-full" : ""
+          }`}
+        >
+          Jaisheel Polimera
+        </h1>
+
+        {/* Navigation Links (Desktop) */}
+        <nav className="hidden md:flex flex-1 justify-center space-x-8">
           {sections.map(({ name }) => (
             <a
               key={name}
               href={`#${name}`}
-              className={`text-sm font-medium cursor-pointer transition-colors ${
+              className={`text-sm font-medium cursor-pointer ${
                 activeSection === name ? "text-purple-400" : "text-gray-400"
               } hover:text-purple-300`}
             >
@@ -67,15 +87,18 @@ const Layout: React.FC = () => {
           ))}
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button className="md:hidden text-white text-xl" onClick={() => setMenuOpen(!menuOpen)}>
+        {/* Mobile Menu Icon */}
+        <button
+          className="md:hidden text-xl text-white"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           <FaBars />
         </button>
       </header>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden fixed top-14 left-0 w-full bg-[#1e1e2e] py-4 flex flex-col items-center space-y-4 shadow-lg">
+        <div className="md:hidden fixed top-14 left-0 w-full bg-[#1e1e2e] shadow-lg py-4 flex flex-col items-center space-y-4 z-50">
           {sections.map(({ name }) => (
             <a
               key={name}
@@ -90,8 +113,19 @@ const Layout: React.FC = () => {
       )}
 
       {/* Hero Section */}
-      <section id="Hero" className="w-full min-h-screen flex flex-col items-center justify-center px-4">
+      <section
+        id="Hero"
+        className="relative w-screen min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden"
+      >
         <HeroPage />
+        {/* Scroll Down Button */}
+        <motion.div
+          className="absolute bottom-10 flex items-center justify-center p-2 bg-purple-600 rounded-full shadow-lg cursor-pointer animate-bounce"
+          onClick={() => scrollToSection("About")}
+          whileHover={{ scale: 1.1 }}
+        >
+          <BsChevronDown className="text-2xl text-white" />
+        </motion.div>
       </section>
 
       {/* Other Sections */}
@@ -104,11 +138,21 @@ const Layout: React.FC = () => {
           ))}
         </Suspense>
       </main>
+
+      {/* Scroll-to-Top Button */}
+      {showScrollToTop && (
+        <motion.div
+          className="fixed bottom-10 right-10 p-2 bg-purple-600 rounded-full shadow-lg cursor-pointer"
+          onClick={() => scrollToSection("Hero")}
+          whileHover={{ scale: 1.1 }}
+        >
+          <FaArrowUp className="text-xl text-white" />
+        </motion.div>
+      )}
     </div>
   );
 };
 
-// Section Component with fade-in animation
 const Section: React.FC<{ id: string; children: React.ReactNode }> = ({ id, children }) => {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -120,7 +164,7 @@ const Section: React.FC<{ id: string; children: React.ReactNode }> = ({ id, chil
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
-      className="w-full min-h-screen flex flex-col items-center justify-center px-4"
+      className="w-screen min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden"
     >
       {children}
     </motion.section>
