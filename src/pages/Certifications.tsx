@@ -24,11 +24,9 @@ const Certifications: React.FC = () => {
         setLoading(false);
       }
     };
-
     loadCertifications();
   }, []);
 
-  // Adjust cards per view based on screen width
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
@@ -40,11 +38,9 @@ const Certifications: React.FC = () => {
 
     handleResize(); // Set initial value
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Auto-scroll logic: Move the row every 5 seconds
   useEffect(() => {
     if (certifications.length > 0) {
       const interval = setInterval(() => {
@@ -52,7 +48,6 @@ const Certifications: React.FC = () => {
           (prevIndex + 1) % Math.ceil(certifications.length / cardsPerView)
         );
       }, 5000);
-
       return () => clearInterval(interval);
     }
   }, [certifications, cardsPerView]);
