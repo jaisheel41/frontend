@@ -36,7 +36,9 @@ const Experience: React.FC = () => {
 
     return (
         <div className="p-6 max-w-7xl mx-auto text-white">
-            <h1 className="text-4xl font-bold mb-10 text-center text-white">My Professional Journey</h1>
+            <h1 className="text-4xl font-bold mb-10 text-center text-white">
+                My <span className="text-blue-500">Professional </span> Journey
+            </h1>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Left Sidebar (Clickable Experience List) */}
                 <div className="space-y-4">

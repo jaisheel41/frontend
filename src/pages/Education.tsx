@@ -1,33 +1,35 @@
+
+
 import React, { useEffect, useState, useRef } from 'react';
+import { motion, useAnimation, useInView } from 'framer-motion';
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+
 import type { EducationData } from '../types/types';
 import { fetchEducation } from '../services/portfolioService';
-import { motion, useAnimation, useInView } from 'framer-motion';
 
 const EducationCard: React.FC<{ edu: EducationData }> = ({ edu }) => {
     return (
-        <div className="education-card flex gap-6 mb-10">
-            {/* Placeholder for icon */}
-            <div className="icon-container w-16 h-16 rounded-full bg-gray-700 flex items-center justify-center">
-                {/* Icon will go here */}
-            </div>
-
-            <div className="details">
-                <h3 className="text-white text-[24px] font-bold">{edu.degree}</h3>
-                <p className="text-secondary text-[16px] font-semibold">{edu.institution}</p>
-                <p className="text-gray-400 text-[14px]">
-                    {edu.start_date} - {edu.end_date || 'Present'}
-                </p>
-                <ul className="mt-3 list-disc ml-6 space-y-2">
-                    {edu.description.split('.').map((point, index) => (
-                        point.trim() && (
-                            <li key={`point-${index}`} className="text-white-100 text-[14px] tracking-wider">
-                                {point.trim()}
-                            </li>
-                        )
-                    ))}
-                </ul>
-            </div>
-        </div>
+        <VerticalTimelineElement
+            contentStyle={{ background: "#1d1836", color: "#fff", borderRadius: "10px" }}
+            contentArrowStyle={{ borderRight: "7px solid #232631" }}
+            date={`${new Date(edu.start_date).getFullYear()} - ${edu.end_date ? new Date(edu.end_date).getFullYear() : 'Present'}`}
+            iconStyle={{ background: "#4A90E2", color: "#fff" }} // Customize icon background
+            icon={<div className="flex items-center justify-center w-full h-full">🎓</div>} // Placeholder icon
+        >
+            <h3 className="text-white text-[24px] font-bold">{edu.degree}</h3>
+            <p className="text-secondary text-[18px] font-semibold">{edu.institution}</p>
+            
+            <ul className="mt-3 list-disc ml-6 space-y-2">
+                {edu.description.split('.').map((point, index) => (
+                    point.trim() && (
+                        <li key={`edu-${index}`} className="text-white-100 text-[14px] tracking-wider">
+                            {point.trim()}
+                        </li>
+                    )
+                ))}
+            </ul>
+        </VerticalTimelineElement>
     );
 };
 
@@ -44,7 +46,8 @@ const Education: React.FC = () => {
         const getEducation = async () => {
             try {
                 const data = await fetchEducation();
-                setEducation(data);
+                const sortedData = data.sort((a, b) => new Date(b.start_date).getTime() - new Date(a.start_date).getTime());
+                setEducation(sortedData);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching education:', error);
@@ -74,14 +77,20 @@ const Education: React.FC = () => {
                     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
                 }}
             >
-                <p className="text-center text-gray-400 text-lg">What I have Studied so far</p>
+                {/* <p className="text-center text-gray-400 text-lg">What I have Studied so far</p>
+                <h2 className="text-center text-white text-4xl font-bold">Education</h2> */}
+
+                <p className="text-white-400 text-center text-lg">What I have Studied so far</p>
                 <h2 className="text-center text-white text-4xl font-bold">Education</h2>
+
             </motion.div>
 
-            <div className="mt-10 border-l-2 border-gray-700 pl-6">
-                {education.map((edu) => (
-                    <EducationCard key={edu.id} edu={edu} />
-                ))}
+            <div className="mt-10">
+                <VerticalTimeline>
+                    {education.map((edu) => (
+                        <EducationCard key={edu.id} edu={edu} />
+                    ))}
+                </VerticalTimeline>
             </div>
         </div>
     );
