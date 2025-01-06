@@ -69,19 +69,15 @@ const Education: React.FC = () => {
 
     return (
         <div ref={sectionRef} className="p-6 max-w-6xl mx-auto">
-            <motion.div
-                initial="hidden"
-                animate={mainControls}
-                variants={{
-                    hidden: { opacity: 0, y: -20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-                }}
-            >
-                {/* <p className="text-center text-gray-400 text-lg">What I have Studied so far</p>
-                <h2 className="text-center text-white text-4xl font-bold">Education</h2> */}
-
-                <p className="text-white-400 text-center text-lg">What I have Studied so far</p>
-                <h2 className="text-center text-white text-4xl font-bold">Education</h2>
+            <motion.div 
+                        className="p-6 max-w-6xl mx-auto"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <h1 className="text-4xl font-bold mb-10 text-center text-white">
+                            My <span className="text-blue-500">Education</span>
+                        </h1>
 
             </motion.div>
 

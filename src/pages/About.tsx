@@ -53,7 +53,7 @@ const About: React.FC = () => {
                             Resume
                         </a>
                         <a 
-                            href="" 
+                            href="https://www.linkedin.com/in/sai-jaisheel-polimera-4a170a1b8/" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md 
