@@ -191,9 +191,7 @@ const Experience: React.FC = () => {
                                     </small>
                                 </div>
                                 <ul className="list-disc list-inside mt-4 text-gray-300">
-                                    {selectedExperience.description.split('. ').map((item, idx) => (
-                                        item.trim() && <li key={idx}>{item.trim()}</li>
-                                    ))}
+                                    {selectedExperience.description}
                                 </ul>
                             </motion.div>
                         )}
