@@ -322,9 +322,16 @@ const Skills: React.FC = () => {
                             }`}
                         >
                             <img
-                                src={skillIcons[skill.name] || "/default-skill-icon.png"}
+                                src={skillIcons[skill.name] || "https://cdn-icons-png.flaticon.com/512/1828/1828970.png"}
                                 alt={skill.name}
                                 className="w-16 h-16 object-contain"
+                                onError={(e) => (e.currentTarget.src = "https://cdn-icons-png.flaticon.com/512/1828/1828970.png")}
+                                // onError={(e) => {
+                                //     if (e.currentTarget.src !== "https://cdn-icons-png.flaticon.com/512/1828/1828970.png") {
+                                //         console.warn(`Failed to load ${e.currentTarget.src}, replacing with default.`);
+                                //         e.currentTarget.src = "https://cdn-icons-png.flaticon.com/512/1828/1828970.png";
+                                //     }
+                                // }}
                             />
                         </div>
                         <p className="mt-2 text-lg font-semibold">{skill.name}</p>

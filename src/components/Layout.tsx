@@ -60,14 +60,16 @@ const Layout: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white overflow-x-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white">
       {/* Navbar */}
+      {/* overflow-x-hidden overflow-y-auto */}
       <header className="z-50 w-full fixed top-0 bg-[#1e1e2e] shadow-md flex items-center justify-between px-4 md:px-12 py-3">
         {/* Name */}
         <h1
           className={`text-xl font-bold text-purple-400 md:text-left ${
             menuOpen ? "text-center w-full" : ""
-          }`}
+          } cursor-pointer`}
+          onClick={() => (scrollToSection("Hero"))}
         >
           Jaisheel Polimera
         </h1>
@@ -164,7 +166,7 @@ const Section: React.FC<{ id: string; children: React.ReactNode }> = ({ id, chil
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
-      className="w-screen min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden"
+      className="w-screen min-h-screen flex flex-col items-center justify-center px-4"
     >
       {children}
     </motion.section>

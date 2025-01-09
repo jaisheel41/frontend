@@ -22,7 +22,7 @@ const Projects: React.FC = () => {
         const loadProjects = async () => {
             try {
                 const data = await fetchProjects();
-                console.log("Fetched Projects Data:", data);
+                //console.log("Fetched Projects Data:", data);
                 setProjects(data);
                 setLoading(false);
             } catch (err) {
