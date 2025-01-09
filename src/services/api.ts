@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://127.0.0.1:8000/api/', // Base URL for the Django backend
+    baseURL: 'https://jaisheel42.pythonanywhere.com/api/', // Base URL for the Django backend
     headers: {
         'Content-Type': 'application/json',
     },
