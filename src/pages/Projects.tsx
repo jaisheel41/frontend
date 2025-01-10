@@ -57,7 +57,7 @@ const Projects: React.FC = () => {
             transition={{ duration: 0.6 }}
         >
             <h1 className="text-4xl font-bold mb-10 text-center text-white">
-                Personal <span className="text-blue-500">Projects</span>
+            Code <span className="text-blue-500">in </span> Action
             </h1>
 
             <motion.div

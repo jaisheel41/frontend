@@ -145,7 +145,7 @@ const Contact: React.FC = () => {
   return (
     <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5 }} className="p-6 max-w-4xl mx-auto">
       <h1 className="text-4xl font-bold mb-10 text-center text-white">
-        Contact <span className="text-blue-500">Me</span>
+      Let's <span className="text-blue-500">Connect</span>
       </h1>
 
       {successMessage && (

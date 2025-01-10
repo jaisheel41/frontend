@@ -3,7 +3,10 @@ import React from 'react';
 const About: React.FC = () => {
     return (
         <div className="flex flex-col items-center text-white p-10">
-            <h1 className="text-5xl font-extrabold mb-6">Overview.</h1>
+            {/* <h1 className="text-5xl font-extrabold mb-6">Who Am I?</h1> */}
+            <h1 className="text-4xl font-bold mb-10 text-white">
+      Who <span className="text-blue-500">Am</span> I?
+      </h1>
             
             <div className="flex flex-col md:flex-row items-center md:items-start max-w-4xl">
                 {/* Profile Picture */}
@@ -22,11 +25,11 @@ const About: React.FC = () => {
                 <div className="ml-0 md:ml-8 mt-6 md:mt-0 text-center md:text-left">
                     <p className="text-lg flex items-center gap-2">
                         <span role="img" aria-label="developer">👨‍💻</span> 
-                        I'm a Software Engineer with experience in web development and cloud technologies.
+                        I'm a Full-Stack Developer with experience in Web Development and Cloud Technologies.
                     </p>
                     <p className="text-lg flex items-center gap-2 mt-2">
                         <span role="img" aria-label="education">🎓</span> 
-                        I hold an MSc in Computing Science from the University of Glasgow.
+                        MSc in Computing Science from the University of Glasgow.
                     </p>
                     <p className="text-lg flex items-center gap-2 mt-2">
                         <span role="img" aria-label="projects">⚙️</span> 

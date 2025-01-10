@@ -304,7 +304,7 @@ const Skills: React.FC = () => {
     return (
         <div className="py-12 flex flex-col items-center bg-transparent">
             <h1 className="text-4xl font-bold mb-10">
-                My <span className="text-blue-400">Skills</span>
+            The <span className="text-blue-400">Tech </span>Stack
             </h1>
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-8">
                 {skills.map((skill) => (

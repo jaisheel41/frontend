@@ -74,7 +74,7 @@ const Education: React.FC = () => {
                         transition={{ duration: 0.6 }}
                     >
                         <h1 className="text-4xl font-bold mb-10 text-center text-white">
-                            My <span className="text-blue-500">Education</span>
+                        Academic <span className="text-blue-500">Footprints</span>
                         </h1>
 
             </motion.div>

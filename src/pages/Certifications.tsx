@@ -34,7 +34,7 @@ const Certifications: React.FC = () => {
       transition={{ duration: 0.6 }}
     >
       <h1 className="text-4xl font-bold mb-10 text-white">
-        Certifications & <span className="text-blue-500">Achievements</span>
+      Accomplished & <span className="text-blue-500">Accredited</span>
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
